@@ -5,7 +5,6 @@ import org.example.service.announcer.Announcer;
 import org.example.service.preparator.Preparator;
 
 public class Worker {
-    //Solution: create ObjectFactory
     private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
     private Preparator preparator = ObjectFactory.getInstance().createObject(Preparator.class);
 

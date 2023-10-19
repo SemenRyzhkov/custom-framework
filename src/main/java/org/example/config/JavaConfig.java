@@ -13,6 +13,7 @@ public class JavaConfig implements Config {
 
     @Override
     //вначале предполагаем что в classpath может находиться одна имплементация
+    //todo разрешить множественную реализацию интерфейсов
     public <T> Class<? extends T> getImplClass(Class<T> ifc) {
         Set<Class<? extends T>> classes = scanner.getSubTypesOf(ifc);
         if (classes.size()!=1){

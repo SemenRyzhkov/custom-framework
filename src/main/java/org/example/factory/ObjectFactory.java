@@ -21,6 +21,8 @@ public class ObjectFactory {
         if (type.isInterface()) {
             implClass = config.getImplClass(type);
         }
-        return implClass.getDeclaredConstructor().newInstance();
+        T t = implClass.getDeclaredConstructor().newInstance();
+
+        return t;
     }
 }
