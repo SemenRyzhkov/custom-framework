@@ -6,7 +6,9 @@ import org.example.service.preparator.Preparator;
 import org.example.service.preparator.PreparatorImpl;
 
 public class Worker {
-
+    //Problem: создание, выбор правильной имплементации и настройка сервисов - не наша responsibility
+    //получается наш класс работает, как фабрика. Это плохо
+    //todo кто будет решать какая имплементация?
     private Announcer announcer = new AnnouncerImpl();
     private Preparator preparator = new PreparatorImpl();
 
