@@ -6,11 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class JavaConfig implements Config {
+    //добавим возможность получения нашего настроенного сканера
     private Reflections scanner;
-    //Map - можно сказать сторонний конфиг файл, который будет считан в runtime
-    //это дает:
-    //централизованное место для создания всех объектов -
-    //если надо менять имплементацию - не надо лезть в код
     private Map<Class, Class> ifc2ImplClass;
 
     public JavaConfig(String packageToScan, Map<Class, Class> ifc2ImplClass) {
@@ -28,5 +25,10 @@ public class JavaConfig implements Config {
             }
             return classes.iterator().next();
         });
+    }
+
+    @Override
+    public Reflections getScanner() {
+        return scanner;
     }
 }

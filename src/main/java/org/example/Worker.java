@@ -5,6 +5,8 @@ import org.example.service.announcer.Announcer;
 import org.example.service.preparator.Preparator;
 
 public class Worker {
+    //todo добавить возможность кэшировать синглтоны, т.к синглтон это хорошо, но создавать его руками - плохо
+    //поэтому нужно создать еще один уровень абстракции - Context, чтобы он взял эту responsibility на себя
     private Announcer announcer = ObjectFactory.getInstance().createObject(Announcer.class);
     private Preparator preparator = ObjectFactory.getInstance().createObject(Preparator.class);
 

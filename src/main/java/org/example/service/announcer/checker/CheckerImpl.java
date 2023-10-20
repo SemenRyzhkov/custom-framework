@@ -3,7 +3,7 @@ package org.example.service.announcer.checker;
 import org.example.service.announcer.annotation.InjectProperty;
 
 public class CheckerImpl implements Checker {
-@InjectProperty
+    @InjectProperty("linter")
     private String check;
 
     @Override
