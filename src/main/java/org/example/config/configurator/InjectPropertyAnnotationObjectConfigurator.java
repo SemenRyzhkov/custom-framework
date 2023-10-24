@@ -2,6 +2,7 @@ package org.example.config.configurator;
 
 import lombok.SneakyThrows;
 import org.example.annotation.InjectProperty;
+import org.example.context.ApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -24,7 +25,8 @@ public class InjectPropertyAnnotationObjectConfigurator implements ObjectConfigu
 
     @Override
     @SneakyThrows
-    public void configure(Object o) {
+    //этот конфигуратор пока не пользуется, но может начать пользоваться в любой момент контекстом
+    public void configure(Object o, ApplicationContext context) {
         Class<?> implClass = o.getClass();
         for (Field field : implClass.getDeclaredFields()) {
             InjectProperty annotation = field.getAnnotation(InjectProperty.class);

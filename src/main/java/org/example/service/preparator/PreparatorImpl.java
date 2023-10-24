@@ -1,12 +1,13 @@
 package org.example.service.preparator;
 
-import org.example.annotation.Singlton;
-import org.example.factory.ObjectFactory;
+import org.example.annotation.InjectByType;
+import org.example.annotation.Singleton;
 import org.example.service.announcer.checker.Checker;
 
-@Singlton
+@Singleton
 public class PreparatorImpl implements Preparator {
-    Checker checker = ObjectFactory.getInstance().createObject(Checker.class);
+    @InjectByType
+    Checker checker;
 
     @Override
     public void prepareForBeginWork() {
