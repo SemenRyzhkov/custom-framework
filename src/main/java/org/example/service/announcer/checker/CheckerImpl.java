@@ -1,6 +1,6 @@
 package org.example.service.announcer.checker;
 
-import org.example.service.announcer.annotation.InjectProperty;
+import org.example.annotation.InjectProperty;
 
 public class CheckerImpl implements Checker {
     @InjectProperty("linter")

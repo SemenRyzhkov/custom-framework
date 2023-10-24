@@ -1,7 +1,7 @@
 package org.example.config.configurator;
 
 import lombok.SneakyThrows;
-import org.example.service.announcer.annotation.InjectProperty;
+import org.example.annotation.InjectProperty;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

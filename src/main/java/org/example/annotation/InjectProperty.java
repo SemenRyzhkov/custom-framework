@@ -1,4 +1,4 @@
-package org.example.service.announcer.annotation;
+package org.example.annotation;
 
 import java.lang.annotation.Retention;
 

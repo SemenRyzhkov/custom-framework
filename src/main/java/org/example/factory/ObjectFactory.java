@@ -29,6 +29,7 @@ public class ObjectFactory {
         for (Class<? extends ObjectConfigurator> aClass : config.getScanner().getSubTypesOf(ObjectConfigurator.class)) {
             configurators.add(aClass.getDeclaredConstructor().newInstance());
         }
+        System.out.println(configurators);
     }
 
     @SneakyThrows
