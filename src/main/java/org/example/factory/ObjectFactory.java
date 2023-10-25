@@ -1,5 +1,6 @@
 package org.example.factory;
 
+import lombok.Setter;
 import lombok.SneakyThrows;
 import org.example.config.Config;
 import org.example.config.JavaConfig;
@@ -13,15 +14,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ObjectFactory {
-    private static ObjectFactory ourInstance = new ObjectFactory();
-    //убираем конфиг, меняем его на весь контекст
-    //private Config config;
-    private ApplicationContext context;
+    private static ObjectFactory ourInstance;
+    private final ApplicationContext context;
     private List<ObjectConfigurator> configurators = new ArrayList<>();
-
-    public static ObjectFactory getInstance() {
-        return ourInstance;
-    }
 
     @SneakyThrows
     public ObjectFactory(ApplicationContext context) {

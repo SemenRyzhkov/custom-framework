@@ -1,6 +1,7 @@
 package org.example.context;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.example.annotation.Singleton;
 import org.example.config.Config;
 import org.example.factory.ObjectFactory;
@@ -9,8 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ApplicationContext {
-    //ObjectFactory нужна контексту, чтобы он создавал объекты с ее помощью
-    //но и фабрика должна зависеть от контекста, чтобы передавать его в метод configure();
+    @Setter
     private ObjectFactory objectFactory;
     private Map<Class, Object> cache = new ConcurrentHashMap<>();
     @Getter
