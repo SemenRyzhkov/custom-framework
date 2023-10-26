@@ -33,9 +33,10 @@ public class ObjectFactory {
 
     @SneakyThrows
     public <T> T createObject(Class<T> implClass) {
+        //по сути получили картину того, как объект создается в спринге
         T t = create(implClass);
         configure(t);
-        invokeInit(implClass, t);
+        runInitMethod(implClass, t);
         t = wrapWithProxyIfNeeded(implClass, t);
         return t;
     }
@@ -47,7 +48,7 @@ public class ObjectFactory {
         return t;
     }
 
-    private <T> void invokeInit(Class<T> implClass, T t) throws IllegalAccessException, InvocationTargetException {
+    private <T> void runInitMethod(Class<T> implClass, T t) throws IllegalAccessException, InvocationTargetException {
         for (Method method : implClass.getMethods()) {
             if (method.isAnnotationPresent(PostConstruct.class)) {
                 method.invoke(t);
