@@ -1,19 +1,14 @@
 package org.example;
 
+import org.example.annotation.Deprecate;
 import org.example.annotation.InjectByType;
 import org.example.factory.ObjectFactory;
 import org.example.service.announcer.Announcer;
 import org.example.service.preparator.Preparator;
 
+//Todo пока это работать не будет, т.к в нашем прокси-конфигураторе нет возможности обрабатывать классы, не импл-ие интерфейс
+@Deprecate
 public class Worker {
-    //todo добавить возможность кэшировать синглтоны, т.к синглтон это хорошо, но создавать его руками - плохо
-    //поэтому нужно создать еще один уровень абстракции - Context, чтобы он взял эту responsibility на себя
-
-    //пока это плохо, потому что это не инверсия контроля, это lookup
-    //наш сервис завязан на инфраструктурный код, на его апи, это не даст возможность подменить этот апи завтра,
-    //поэтому нужна инверсия контроля: "не вы будете дергать наши методы, чтобы мы настроили ваши объекты,
-    //а мы сами создавая ваши объекты будем понимать, как их настроить и будем их настраивать
-
     @InjectByType
     private Announcer announcer;
     @InjectByType

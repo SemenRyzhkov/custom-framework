@@ -1,4 +1,4 @@
-package org.example.config.configurator;
+package org.example.config.configurator.objectconfigurator;
 
 import org.example.context.ApplicationContext;
 

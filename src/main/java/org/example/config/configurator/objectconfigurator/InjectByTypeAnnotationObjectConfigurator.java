@@ -1,10 +1,8 @@
-package org.example.config.configurator;
+package org.example.config.configurator.objectconfigurator;
 
 import lombok.SneakyThrows;
 import org.example.annotation.InjectByType;
-import org.example.annotation.InjectProperty;
 import org.example.context.ApplicationContext;
-import org.example.factory.ObjectFactory;
 
 import java.lang.reflect.Field;
 

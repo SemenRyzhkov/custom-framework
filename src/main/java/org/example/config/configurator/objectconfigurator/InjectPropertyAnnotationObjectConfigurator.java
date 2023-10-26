@@ -1,4 +1,4 @@
-package org.example.config.configurator;
+package org.example.config.configurator.objectconfigurator;
 
 import lombok.SneakyThrows;
 import org.example.annotation.InjectProperty;
