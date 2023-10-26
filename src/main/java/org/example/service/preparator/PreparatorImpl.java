@@ -1,5 +1,6 @@
 package org.example.service.preparator;
 
+import org.example.annotation.Deprecate;
 import org.example.annotation.InjectByType;
 import org.example.annotation.PostConstruct;
 import org.example.annotation.Singleton;
@@ -10,9 +11,8 @@ public class PreparatorImpl implements Preparator {
     Checker checker;
 
     @PostConstruct
+    //second face constructor
     public void init() {
-        //problem нельзя настраивать объект, пока он не создался -> NPE
-        //todo для настройки объекта реализовать second face constructor
         System.out.println(checker.getClass());
     }
 

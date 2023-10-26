@@ -1,7 +1,9 @@
 package org.example.service.announcer.checker;
 
+import org.example.annotation.Deprecate;
 import org.example.annotation.InjectProperty;
 
+@Deprecate
 public class CheckerImpl implements Checker {
     @InjectProperty("linter")
     private String check;

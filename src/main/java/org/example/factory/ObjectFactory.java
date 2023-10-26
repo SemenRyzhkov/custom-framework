@@ -2,6 +2,7 @@ package org.example.factory;
 
 import lombok.Setter;
 import lombok.SneakyThrows;
+import org.example.annotation.Deprecate;
 import org.example.annotation.PostConstruct;
 import org.example.config.Config;
 import org.example.config.JavaConfig;
@@ -10,8 +11,10 @@ import org.example.context.ApplicationContext;
 import org.example.service.preparator.Preparator;
 import org.example.service.preparator.PreparatorImpl;
 
+import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,14 +38,16 @@ public class ObjectFactory {
     public <T> T createObject(Class<T> implClass) {
         T t = create(implClass);
         configure(t);
-        //где должны находиться инвокерв для инит методов?
-        //ответ: оставим фабрике, т.к ее респонсибилити настраивать метод(вызывая конструктор)
-        //инит метод - это по сути вторичный конструктор
-        //если же выносить в один из конфигураторов(как в спринге), то нужно будет, чтобы он вызывался последним -
-        //приходим к ситуации, когда становится важным ордеринг, а мы этого не хотим
         invokeInit(implClass, t);
-        //todo добавить возможность клиентам менять поведение методов
-        //add proxy pattern
+        //todo create new configurator typr for this logic
+        if (implClass.isAnnotationPresent(Deprecate.class)) {
+            //сгенерит налету proxy класс и создаст сразу из него объект
+            return (T) Proxy.newProxyInstance(implClass.getClassLoader(), implClass.getInterfaces(), (proxy, method, args) -> {
+                //вся магия по добавлению логики здесь
+                System.out.println("Deprecated logic from PROXY class");
+                return method.invoke(t);
+            });
+        }
         return t;
     }
 
